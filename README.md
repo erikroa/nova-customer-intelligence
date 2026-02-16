@@ -148,7 +148,7 @@ nova_customer_intelligence/
 
 > Screenshots of Looker Studio dashboards connected to the BigQuery mart layer.
 
-*(Dashboard screenshots to be added)*
+URL: https://github.com/erikroa/nova-customer-intelligence/tree/main/dashboards
 
 ## About
 
