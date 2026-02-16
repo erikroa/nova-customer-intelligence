@@ -1,0 +1,306 @@
+version: 2
+
+models:
+  # ───────────────────────────────────────────
+  # stg_accounts
+  # ───────────────────────────────────────────
+  - name: stg_accounts
+    description: >
+      Cleaned account data from CRM system. One row per customer account.
+      Light transformations only: trimming, lowercasing, type casting.
+    columns:
+      - name: account_id
+        description: "Unique identifier for each customer account (e.g. ACC-0001)"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: company_name
+        description: "Legal company name"
+        data_tests:
+          - not_null
+
+      - name: industry
+        description: "Industry vertical (lowercased)"
+        data_tests:
+          - not_null
+
+      - name: employee_count
+        description: "Number of employees at the company"
+        data_tests:
+          - not_null
+
+      - name: plan_tier
+        description: "Current subscription tier"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['starter', 'growth', 'enterprise']
+
+      - name: account_owner
+        description: "CSM or account manager assigned to this account"
+        data_tests:
+          - not_null
+
+      - name: region
+        description: "Geographic region of the account"
+        data_tests:
+          - accepted_values:
+              values: ['north_america', 'europe', 'apac', 'latam']
+
+      - name: signup_date
+        description: "Date the account was first created"
+        data_tests:
+          - not_null
+
+      - name: status
+        description: "Account lifecycle status"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['active', 'churned', 'trial', 'suspended']
+
+  # ───────────────────────────────────────────
+  # stg_subscriptions
+  # ───────────────────────────────────────────
+  - name: stg_subscriptions
+    description: >
+      Cleaned subscription and contract data from billing system.
+      One row per subscription. Accounts may have multiple subscriptions
+      (base plan + add-ons, or historical upgrades).
+    columns:
+      - name: subscription_id
+        description: "Unique identifier for each subscription"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign key to stg_accounts"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
+
+      - name: product_name
+        description: "Product identifier (novacrm_platform, api_access, advanced_analytics, priority_support)"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['novacrm_platform', 'api_access', 'advanced_analytics', 'priority_support']
+
+      - name: plan_tier
+        description: "Plan tier at time of subscription"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['starter', 'growth', 'enterprise']
+
+      - name: mrr_amount
+        description: "Monthly recurring revenue in USD"
+        data_tests:
+          - not_null
+
+      - name: start_date
+        description: "Subscription start date"
+        data_tests:
+          - not_null
+
+      - name: status
+        description: "Subscription lifecycle status"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['active', 'cancelled', 'upgraded', 'trial']
+
+      - name: is_active
+        description: "Boolean flag: true if subscription is currently active"
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # stg_invoices
+  # ───────────────────────────────────────────
+  - name: stg_invoices
+    description: >
+      Cleaned invoice data from billing system. One row per invoice.
+      Monthly billing records — the source of truth for revenue.
+    columns:
+      - name: invoice_id
+        description: "Unique identifier for each invoice"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign key to stg_accounts"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
+
+      - name: invoice_date
+        description: "Date the invoice was issued"
+        data_tests:
+          - not_null
+
+      - name: amount
+        description: "Invoice total in USD"
+        data_tests:
+          - not_null
+
+      - name: currency
+        description: "Currency code (standardized to uppercase)"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['USD']
+
+      - name: status
+        description: "Invoice payment status"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['paid', 'overdue', 'void']
+
+      - name: invoice_month
+        description: "First day of the invoice month (for aggregation)"
+        data_tests:
+          - not_null
+
+      - name: is_paid
+        description: "Boolean flag: true only for paid invoices"
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # stg_usage_events
+  # ───────────────────────────────────────────
+  - name: stg_usage_events
+    description: >
+      Cleaned product usage event data. One row per user action.
+      Used to measure product adoption, engagement depth, and feature usage.
+    columns:
+      - name: event_id
+        description: "Unique identifier for each event"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign key to stg_accounts"
+        data_tests:
+          - not_null
+
+      - name: user_id
+        description: "Identifier for the individual user who performed the action"
+        data_tests:
+          - not_null
+
+      - name: event_name
+        description: "Name of the product action (e.g. dashboard_viewed, api_call)"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - dashboard_viewed
+                - report_created
+                - contact_added
+                - email_sent
+                - deal_updated
+                - api_call
+                - export_generated
+                - workflow_created
+                - integration_configured
+                - user_invited
+                - search_performed
+                - filter_applied
+                - note_added
+                - task_completed
+                - meeting_logged
+
+      - name: event_timestamp
+        description: "Timestamp of when the event occurred"
+        data_tests:
+          - not_null
+
+      - name: event_date
+        description: "Date extracted from event_timestamp (for daily aggregation)"
+        data_tests:
+          - not_null
+
+      - name: event_category
+        description: "Feature group classification: reporting, crm_core, communication, advanced, platform"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['reporting', 'crm_core', 'communication', 'advanced', 'platform', 'other']
+
+  # ───────────────────────────────────────────
+  # stg_support_tickets
+  # ───────────────────────────────────────────
+  - name: stg_support_tickets
+    description: >
+      Cleaned support ticket data. One row per ticket.
+      Includes computed resolution time and SLA breach flags.
+    columns:
+      - name: ticket_id
+        description: "Unique identifier for each support ticket"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign key to stg_accounts"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_accounts')
+              field: account_id
+
+      - name: created_at
+        description: "Timestamp when the ticket was opened"
+        data_tests:
+          - not_null
+
+      - name: priority
+        description: "Ticket priority level (p1 = critical, p4 = low)"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['p1', 'p2', 'p3', 'p4']
+
+      - name: category
+        description: "Ticket type classification"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['bug', 'feature_request', 'billing', 'onboarding', 'how_to', 'performance']
+
+      - name: status
+        description: "Ticket resolution status"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['open', 'resolved', 'escalated']
+
+      - name: satisfaction_score
+        description: "Customer satisfaction rating (1.0 - 5.0). Null for open tickets."
+
+      - name: resolution_hours
+        description: "Hours from ticket creation to resolution. Null for open tickets."
+
+      - name: sla_target_hours
+        description: "SLA target in hours based on priority (P1=4h, P2=12h, P3=48h, P4=120h)"
+        data_tests:
+          - not_null
+
+      - name: is_sla_breach
+        description: "True if resolution time exceeded SLA target. Null for open tickets."
+
+      - name: created_date
+        description: "Date extracted from created_at (for aggregation)"
+        data_tests:
+          - not_null

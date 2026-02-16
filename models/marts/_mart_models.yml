@@ -1,0 +1,153 @@
+version: 2
+
+models:
+  # ───────────────────────────────────────────
+  # customer_health_scores
+  # ───────────────────────────────────────────
+  - name: customer_health_scores
+    description: >
+      Composite health score (0-100) for each active account.
+      Combines usage frequency, support sentiment, revenue trend,
+      and engagement depth into a single actionable score.
+      Grain: one row per active account.
+    columns:
+      - name: account_id
+        description: "Primary key — one row per active account"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: health_score
+        description: "Weighted composite score: 0 = critical, 100 = champion"
+        data_tests:
+          - not_null
+
+      - name: health_tier
+        description: "Human-readable health classification"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['champion', 'healthy', 'neutral', 'at_risk', 'critical']
+
+      - name: account_segment
+        data_tests:
+          - not_null
+
+      - name: intervention_priority
+        description: "Rank ordering — 1 = most urgent, needs attention first"
+        data_tests:
+          - unique
+          - not_null
+
+  # ───────────────────────────────────────────
+  # churn_risk_view
+  # ───────────────────────────────────────────
+  - name: churn_risk_view
+    description: >
+      Churn risk assessment for active accounts. Combines health score
+      with usage trends, escalation signals, and revenue trajectory.
+      Grain: one row per active account.
+    columns:
+      - name: account_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: risk_level
+        description: "Overall churn risk: critical, high, medium, or low"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['critical', 'high', 'medium', 'low']
+
+      - name: risk_signal_count
+        description: "Number of active risk signals (0-4). Higher = more urgent."
+        data_tests:
+          - not_null
+
+      - name: health_score
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # nrr_summary
+  # ───────────────────────────────────────────
+  - name: nrr_summary
+    description: >
+      Monthly net revenue retention summary. Shows the MRR waterfall
+      (starting → new → expansion → contraction → churn → ending)
+      and calculates NRR and GRR percentages.
+      Grain: one row per month.
+    columns:
+      - name: revenue_month
+        description: "First day of the month"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: ending_mrr
+        description: "Total MRR at end of month"
+        data_tests:
+          - not_null
+
+      - name: paying_accounts
+        description: "Number of accounts that paid in this month"
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # revenue_cohort_analysis
+  # ───────────────────────────────────────────
+  - name: revenue_cohort_analysis
+    description: >
+      Cohort retention analysis. Groups accounts by signup month
+      and tracks revenue and account retention over time.
+      Grain: one row per cohort per month offset.
+    columns:
+      - name: cohort_month
+        description: "Signup month defining the cohort"
+        data_tests:
+          - not_null
+
+      - name: months_since_signup
+        description: "Number of months after the cohort's first month"
+        data_tests:
+          - not_null
+
+      - name: account_retention_pct
+        description: "Percentage of original accounts still paying"
+
+      - name: revenue_retention_pct
+        description: "Percentage of original MRR retained (can exceed 100% with expansion)"
+
+  # ───────────────────────────────────────────
+  # sla_adherence
+  # ───────────────────────────────────────────
+  - name: sla_adherence
+    description: >
+      Support SLA performance by priority level and customer segment.
+      Tracks adherence rates, resolution times, and CSAT.
+      Grain: one row per month per dimension (priority or segment).
+    columns:
+      - name: ticket_year_month
+        description: "Month of the tickets"
+        data_tests:
+          - not_null
+
+      - name: dimension_type
+        description: "Grouping dimension: priority or segment"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['priority', 'segment']
+
+      - name: dimension_value
+        description: "Value within the dimension (e.g. p1, p2, enterprise, smb)"
+        data_tests:
+          - not_null
+
+      - name: total_tickets
+        description: "Count of tickets in this group"
+        data_tests:
+          - not_null

@@ -1,0 +1,151 @@
+account_id,company_name,industry,employee_count,plan_tier,account_owner,region,signup_date,status
+ACC-0001,Johnson LLC,manufacturing,42,growth,Marcus Johnson,north_america,2024-05-11,active
+ACC-0002,Taylor Inc,healthcare,99,starter,Rachel Thompson,europe,2023-07-10,churned
+ACC-0003,"Mcclain, Miller and Henderson",professional_services,32,starter,Sarah Chen,europe,2024-06-09,active
+ACC-0004,Robinson PLC,manufacturing,389,growth,David Kim,europe,2023-01-24,active
+ACC-0005,Hoffman Ltd,finance,253,enterprise,James O'Brien,europe,2024-04-12,active
+ACC-0006,"Gardner, Robinson and Lawrence",education,32,starter,Sarah Chen,north_america,2024-05-19,churned
+ACC-0007,Blake and Sons,technology,49,starter,James O'Brien,europe,2024-09-20,active
+ACC-0008,Peterson-Moore,retail,53,starter,James O'Brien,europe,2024-06-26,active
+ACC-0009,Garcia-James,healthcare,4929,enterprise,Sarah Chen,europe,2024-08-16,active
+ACC-0010,Munoz-Roman,healthcare,70,growth,David Kim,north_america,2023-10-06,churned
+ACC-0011,Herrera-Dudley,education,216,growth,Marcus Johnson,europe,2024-07-20,active
+ACC-0012,Arnold Ltd,professional_services,379,growth,James O'Brien,north_america,2023-10-22,active
+ACC-0013,Ray-Bush,retail,113,growth,James O'Brien,europe,2024-04-25,active
+ACC-0014,"Perez, Roberts and Miller",technology,46,starter,Marcus Johnson,apac,2023-02-05,churned
+ACC-0015,James Group,manufacturing,3486,enterprise,Rachel Thompson,apac,2023-06-30,active
+ACC-0016,Martin-Kelly,logistics,88,starter,Marcus Johnson,north_america,2024-05-08,active
+ACC-0017,Miles-Sutton,professional_services,76,starter,David Kim,apac,2024-06-04,active
+ACC-0018,"Reid, Ferguson and Sanchez",finance,33,starter,Rachel Thompson,europe,2023-02-25,churned
+ACC-0019,Nelson-Schaefer,finance,470,growth,James O'Brien,europe,2023-12-26,active
+ACC-0020,"Robinson, Nguyen and Tate",logistics,53,starter,Rachel Thompson,north_america,2024-06-18,active
+ACC-0021,Underwood LLC,healthcare,35,growth,James O'Brien,apac,2023-02-13,active
+ACC-0022,Jones-Gentry,healthcare,423,growth,Emily Rodriguez,europe,2023-11-08,active
+ACC-0023,"Edwards, Rios and Foster",retail,399,growth,Rachel Thompson,apac,2024-03-16,churned
+ACC-0024,Thomas-Taylor,retail,84,growth,James O'Brien,europe,2024-05-14,churned
+ACC-0025,"Ryan, Burgess and Patterson",real_estate,52,starter,Rachel Thompson,latam,2024-08-01,churned
+ACC-0026,Cox-Osborn,education,280,growth,Emily Rodriguez,north_america,2024-03-29,active
+ACC-0027,"Snyder, Campos and Callahan",healthcare,77,starter,James O'Brien,europe,2023-04-18,churned
+ACC-0028,"Moore, Becker and Carlson",finance,73,starter,James O'Brien,europe,2023-04-29,churned
+ACC-0029,Carlson-Mcdonald,professional_services,165,growth,David Kim,latam,2023-10-26,active
+ACC-0030,"Valencia, Smith and Le",media,1847,enterprise,James O'Brien,europe,2023-07-15,active
+ACC-0031,"Potter, Mack and Peterson",manufacturing,71,starter,Marcus Johnson,north_america,2024-06-13,active
+ACC-0032,Moore-Smith,manufacturing,75,starter,Sarah Chen,north_america,2023-08-16,active
+ACC-0033,"Baker, Mason and White",technology,147,growth,Emily Rodriguez,north_america,2024-07-14,active
+ACC-0034,"Evans, Fowler and Lynch",real_estate,90,starter,Marcus Johnson,apac,2023-03-24,active
+ACC-0035,Farmer-Ryan,logistics,4920,enterprise,David Kim,north_america,2023-04-29,active
+ACC-0036,"Sellers, George and Burns",media,60,starter,David Kim,apac,2024-08-27,active
+ACC-0037,Koch-Decker,healthcare,88,starter,Sarah Chen,europe,2023-03-28,churned
+ACC-0038,Brown PLC,manufacturing,18,starter,Rachel Thompson,europe,2023-08-27,active
+ACC-0039,Dennis Inc,healthcare,40,starter,David Kim,apac,2023-03-03,active
+ACC-0040,"Cannon, Anderson and Alvarez",real_estate,1002,enterprise,Sarah Chen,latam,2024-08-13,active
+ACC-0041,Baker PLC,logistics,2136,enterprise,David Kim,north_america,2024-03-03,active
+ACC-0042,Hickman Ltd,technology,12,starter,David Kim,north_america,2023-11-25,active
+ACC-0043,Marquez Group,real_estate,262,growth,James O'Brien,apac,2024-06-19,active
+ACC-0044,"Brooks, Lam and Hayes",technology,42,starter,Rachel Thompson,apac,2024-06-05,active
+ACC-0045,Brown Inc,professional_services,45,starter,David Kim,europe,2023-07-12,active
+ACC-0046,"Hall, Robinson and Jones",real_estate,1489,enterprise,Sarah Chen,apac,2024-04-01,active
+ACC-0047,Perez Inc,manufacturing,13,starter,David Kim,north_america,2024-05-05,active
+ACC-0048,Jones-Young,technology,2216,enterprise,Rachel Thompson,north_america,2024-10-29,active
+ACC-0049,Lewis-Anderson,retail,319,growth,Marcus Johnson,europe,2024-06-03,active
+ACC-0050,"Johnston, Sanchez and Kennedy",retail,38,starter,David Kim,north_america,2024-11-16,active
+ACC-0051,Davis Ltd,professional_services,67,growth,Rachel Thompson,latam,2023-11-13,active
+ACC-0052,Henderson-Owens,finance,32,starter,Emily Rodriguez,apac,2023-12-01,active
+ACC-0053,Nunez Ltd,logistics,3227,enterprise,Rachel Thompson,apac,2024-07-20,active
+ACC-0054,Powell LLC,technology,443,growth,James O'Brien,apac,2023-03-18,active
+ACC-0055,Wright and Sons,finance,89,starter,Emily Rodriguez,north_america,2024-09-13,active
+ACC-0056,Taylor-White,retail,75,starter,Rachel Thompson,north_america,2024-02-21,active
+ACC-0057,Baxter Inc,retail,92,starter,Rachel Thompson,europe,2023-12-26,active
+ACC-0058,"Garcia, Pearson and Fernandez",media,616,enterprise,Emily Rodriguez,north_america,2023-12-11,active
+ACC-0059,House and Sons,retail,21,starter,Marcus Johnson,apac,2023-01-12,active
+ACC-0060,Tucker-Lewis,healthcare,248,growth,Sarah Chen,latam,2023-05-10,active
+ACC-0061,Martin Inc,education,106,growth,Rachel Thompson,europe,2023-11-08,active
+ACC-0062,House-Glover,technology,10,starter,Emily Rodriguez,north_america,2023-10-31,active
+ACC-0063,Horton-Cross,real_estate,18,starter,David Kim,latam,2023-08-10,active
+ACC-0064,"Stanley, Tucker and Lee",finance,151,growth,David Kim,north_america,2024-08-31,churned
+ACC-0065,Riley PLC,media,200,growth,James O'Brien,apac,2023-06-19,active
+ACC-0066,"Edwards, Williams and Woods",healthcare,2385,enterprise,David Kim,apac,2023-02-17,active
+ACC-0067,"Moore, Yu and Miller",logistics,2022,enterprise,Emily Rodriguez,north_america,2024-10-24,active
+ACC-0068,Larson Ltd,manufacturing,146,growth,David Kim,north_america,2023-05-25,active
+ACC-0069,Powell PLC,real_estate,2486,enterprise,David Kim,europe,2024-10-31,active
+ACC-0070,"Wheeler, Harvey and Barnes",healthcare,2912,enterprise,Emily Rodriguez,north_america,2023-07-11,churned
+ACC-0071,"Mills, Donovan and Harris",professional_services,2374,enterprise,David Kim,north_america,2024-03-29,active
+ACC-0072,Allen-Foster,real_estate,253,growth,Sarah Chen,north_america,2024-07-10,active
+ACC-0073,"Evans, Stewart and Walton",media,160,growth,Sarah Chen,europe,2024-06-05,active
+ACC-0074,Ellis PLC,healthcare,1814,enterprise,James O'Brien,latam,2023-02-26,active
+ACC-0075,Medina PLC,retail,369,growth,Rachel Thompson,north_america,2023-03-19,churned
+ACC-0076,Mahoney Inc,real_estate,56,starter,Marcus Johnson,north_america,2023-07-25,active
+ACC-0077,Wood and Sons,finance,224,growth,Rachel Thompson,europe,2024-11-13,active
+ACC-0078,"Warner, Carr and Archer",manufacturing,5,starter,David Kim,apac,2023-12-07,active
+ACC-0079,"Smith, Montoya and Evans",logistics,194,growth,James O'Brien,north_america,2024-05-22,active
+ACC-0080,Mcmillan and Sons,finance,491,growth,James O'Brien,north_america,2024-05-30,churned
+ACC-0081,Preston Ltd,healthcare,354,growth,Marcus Johnson,europe,2023-07-25,active
+ACC-0082,Nelson PLC,technology,30,starter,Marcus Johnson,latam,2024-03-05,active
+ACC-0083,"Cooper, Watts and Farrell",media,423,growth,James O'Brien,europe,2023-06-13,active
+ACC-0084,King-Odonnell,manufacturing,226,growth,Marcus Johnson,europe,2024-01-28,active
+ACC-0085,Walters LLC,manufacturing,18,starter,Marcus Johnson,apac,2023-02-09,churned
+ACC-0086,Cook and Sons,manufacturing,267,growth,Sarah Chen,europe,2023-02-04,active
+ACC-0087,Martin-Ramos,professional_services,4551,enterprise,Emily Rodriguez,latam,2024-05-09,suspended
+ACC-0088,Hoffman-Rodriguez,real_estate,4335,enterprise,David Kim,apac,2024-07-02,active
+ACC-0089,"Mckee, Gardner and Davenport",manufacturing,273,growth,James O'Brien,north_america,2024-11-16,active
+ACC-0090,"Hernandez, Anderson and Parker",retail,278,growth,David Kim,north_america,2024-03-28,active
+ACC-0091,Nolan and Sons,real_estate,39,starter,Sarah Chen,north_america,2024-11-29,active
+ACC-0092,Estrada LLC,manufacturing,93,starter,Sarah Chen,europe,2024-06-13,active
+ACC-0093,"Henson, Russell and Oliver",manufacturing,64,starter,David Kim,north_america,2024-08-28,active
+ACC-0094,Hancock and Sons,professional_services,386,growth,David Kim,europe,2023-05-01,active
+ACC-0095,Johnson-Doyle,media,2646,enterprise,Rachel Thompson,apac,2024-11-15,active
+ACC-0096,Pham-Shields,logistics,338,growth,Marcus Johnson,north_america,2023-09-16,churned
+ACC-0097,Adams Ltd,media,229,growth,James O'Brien,north_america,2024-09-21,active
+ACC-0098,Brennan-Garrison,real_estate,95,growth,Sarah Chen,latam,2023-03-25,churned
+ACC-0099,Velasquez Group,media,369,growth,Marcus Johnson,apac,2023-06-22,active
+ACC-0100,Hoover-Savage,manufacturing,38,starter,David Kim,north_america,2023-09-29,active
+ACC-0101,Keller Group,media,224,growth,Emily Rodriguez,apac,2023-06-23,active
+ACC-0102,Lin-Rasmussen,education,413,growth,Marcus Johnson,europe,2023-09-12,active
+ACC-0103,May-Ross,technology,363,growth,Marcus Johnson,north_america,2023-08-05,active
+ACC-0104,"Rivera, Johnson and Wiley",logistics,24,starter,James O'Brien,north_america,2024-10-17,active
+ACC-0105,Carpenter LLC,education,4009,enterprise,Marcus Johnson,europe,2023-07-22,active
+ACC-0106,Carlson LLC,finance,1138,enterprise,Emily Rodriguez,north_america,2023-01-30,active
+ACC-0107,Graham-Joyce,media,44,starter,David Kim,latam,2024-07-19,active
+ACC-0108,Lam-Lee,manufacturing,80,starter,Sarah Chen,europe,2023-03-31,active
+ACC-0109,"Graham, Meyer and Drake",healthcare,92,starter,Rachel Thompson,apac,2023-02-04,active
+ACC-0110,"Bentley, Mclaughlin and Gonzalez",healthcare,59,starter,Rachel Thompson,europe,2024-06-17,active
+ACC-0111,Rush LLC,healthcare,58,starter,David Kim,latam,2023-12-01,churned
+ACC-0112,Alvarado-Martinez,finance,454,growth,David Kim,north_america,2024-04-29,active
+ACC-0113,Hunter-Estrada,real_estate,363,growth,David Kim,europe,2024-11-30,active
+ACC-0114,Terry-Spencer,manufacturing,2398,enterprise,Sarah Chen,north_america,2023-09-11,active
+ACC-0115,Ortega-Gray,professional_services,414,growth,James O'Brien,north_america,2023-05-30,active
+ACC-0116,Gilbert LLC,manufacturing,46,starter,Emily Rodriguez,apac,2024-08-04,active
+ACC-0117,"Bass, Torres and Clark",retail,81,starter,Rachel Thompson,north_america,2023-11-12,churned
+ACC-0118,"Lawson, Morris and Ramos",media,901,enterprise,David Kim,europe,2024-09-02,active
+ACC-0119,Dixon Ltd,logistics,65,starter,David Kim,apac,2024-06-08,active
+ACC-0120,"Miller, Robertson and Schultz",manufacturing,33,starter,Emily Rodriguez,europe,2023-05-12,active
+ACC-0121,Cardenas and Sons,media,75,starter,James O'Brien,europe,2023-09-18,active
+ACC-0122,Walker-Gonzalez,retail,63,starter,Marcus Johnson,north_america,2024-06-06,active
+ACC-0123,Sanchez Group,finance,20,starter,Marcus Johnson,north_america,2023-01-19,churned
+ACC-0124,Gibson Ltd,real_estate,400,growth,Rachel Thompson,north_america,2024-04-19,active
+ACC-0125,Higgins Group,education,29,starter,Marcus Johnson,north_america,2024-03-23,active
+ACC-0126,Sanchez-Douglas,technology,94,growth,Rachel Thompson,north_america,2024-01-19,active
+ACC-0127,Osborne and Sons,technology,4221,enterprise,Rachel Thompson,north_america,2023-01-05,active
+ACC-0128,"Holmes, Williams and Wright",technology,204,growth,Emily Rodriguez,latam,2023-05-17,active
+ACC-0129,Bryant Group,logistics,450,growth,Sarah Chen,europe,2024-10-20,active
+ACC-0130,"Travis, Larson and Dodson",professional_services,107,growth,Emily Rodriguez,north_america,2024-06-02,active
+ACC-0131,Salazar-Ball,professional_services,76,starter,Rachel Thompson,apac,2024-11-23,churned
+ACC-0132,Rivas-Kelley,logistics,71,starter,Emily Rodriguez,apac,2024-01-28,active
+ACC-0133,Manning Group,technology,2701,enterprise,Rachel Thompson,latam,2024-11-27,active
+ACC-0134,Walton-Larsen,retail,31,starter,James O'Brien,north_america,2023-12-16,active
+ACC-0135,"Washington, Allen and Gonzales",technology,75,starter,David Kim,europe,2023-08-04,active
+ACC-0136,Young-Rogers,retail,179,growth,James O'Brien,north_america,2024-07-08,active
+ACC-0137,"Miller, Hernandez and Reyes",retail,783,enterprise,James O'Brien,europe,2024-11-24,active
+ACC-0138,"Lewis, Perry and Rivera",real_estate,1820,enterprise,Marcus Johnson,europe,2023-04-29,active
+ACC-0139,Brown-Wall,finance,1365,enterprise,Emily Rodriguez,europe,2023-12-28,active
+ACC-0140,"Shah, Smith and Gilmore",logistics,2564,enterprise,James O'Brien,north_america,2023-10-30,active
+ACC-0141,Woods-Bender,logistics,39,starter,David Kim,north_america,2024-03-23,active
+ACC-0142,Castaneda-Ashley,professional_services,60,starter,Emily Rodriguez,north_america,2023-08-20,churned
+ACC-0143,"Adkins, Payne and Morrison",professional_services,91,starter,Rachel Thompson,latam,2023-11-22,churned
+ACC-0144,Robinson-Graham,finance,2407,enterprise,David Kim,europe,2023-06-21,active
+ACC-0145,Rogers-Shelton,professional_services,40,starter,David Kim,europe,2023-01-23,active
+ACC-0146,"Martin, Mcdonald and Anderson",media,76,growth,Emily Rodriguez,north_america,2023-11-11,active
+ACC-0147,"Johnson, Long and Elliott",logistics,25,starter,Emily Rodriguez,europe,2024-04-28,active
+ACC-0148,Day and Sons,healthcare,75,starter,Emily Rodriguez,north_america,2023-01-22,active
+ACC-0149,White-Green,technology,56,starter,James O'Brien,apac,2024-11-04,churned
+ACC-0150,Gibson LLC,education,57,growth,Rachel Thompson,apac,2023-09-12,active

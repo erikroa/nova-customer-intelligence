@@ -1,0 +1,237 @@
+version: 2
+
+models:
+  # ───────────────────────────────────────────
+  # dim_date
+  # ───────────────────────────────────────────
+  - name: dim_date
+    description: >
+      Calendar date dimension. One row per day from 2023-01-01 to 2025-12-31.
+      Provides consistent date attributes for time-series joins and aggregation.
+    columns:
+      - name: date_day
+        description: "Calendar date (primary key)"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: month_number
+        data_tests:
+          - not_null
+
+      - name: is_weekend
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # dim_product
+  # ───────────────────────────────────────────
+  - name: dim_product
+    description: >
+      Product catalog dimension. One row per product-tier combination.
+      Includes platform tiers (starter/growth/enterprise) and add-on products.
+    columns:
+      - name: product_key
+        description: "Surrogate key: product_name + plan_tier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: "Internal product identifier"
+        data_tests:
+          - not_null
+
+      - name: product_type
+        description: "Platform or addon"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['platform', 'addon']
+
+      - name: feature_category
+        description: "Feature grouping for adoption analysis"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['core', 'integration', 'analytics', 'support']
+
+  # ───────────────────────────────────────────
+  # dim_account
+  # ───────────────────────────────────────────
+  - name: dim_account
+    description: >
+      Master account dimension. One row per customer account.
+      Combines CRM data with subscription summaries, support history,
+      computed tenure, business segment, and lifecycle stage.
+    columns:
+      - name: account_id
+        description: "Unique account identifier (primary key)"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: company_name
+        data_tests:
+          - not_null
+
+      - name: status
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['active', 'churned', 'trial', 'suspended']
+
+      - name: account_segment
+        description: "Business segment: smb, mid_market, or enterprise"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['smb', 'mid_market', 'enterprise']
+
+      - name: lifecycle_stage
+        description: "Account lifecycle: trial, onboarding, growing, mature, or churned"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['trial', 'onboarding', 'growing', 'mature', 'churned']
+
+      - name: current_mrr
+        description: "Current monthly recurring revenue in USD"
+        data_tests:
+          - not_null
+
+      - name: tenure_months
+        description: "Months since signup date"
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # fct_revenue
+  # ───────────────────────────────────────────
+  - name: fct_revenue
+    description: >
+      Monthly revenue fact table. One row per account per month.
+      Tracks MRR, ARR, and classifies revenue movements into
+      new, expansion, contraction, and flat categories.
+    columns:
+      - name: account_id
+        description: "Foreign key to dim_account"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_account')
+              field: account_id
+
+      - name: revenue_month
+        description: "First day of the revenue month"
+        data_tests:
+          - not_null
+
+      - name: mrr
+        description: "Monthly recurring revenue for this account in this month"
+        data_tests:
+          - not_null
+
+      - name: revenue_movement
+        description: "Revenue change classification: new, expansion, contraction, or flat"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['new', 'expansion', 'contraction', 'flat']
+
+      - name: month_number
+        description: "Nth month since this account's first invoice (for cohort analysis)"
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # fct_usage
+  # ───────────────────────────────────────────
+  - name: fct_usage
+    description: >
+      Daily product usage fact table. One row per account per day.
+      Aggregates raw usage events into volume, breadth, and engagement metrics.
+    columns:
+      - name: account_id
+        description: "Foreign key to dim_account"
+        data_tests:
+          - not_null
+
+      - name: event_date
+        description: "Date of activity"
+        data_tests:
+          - not_null
+
+      - name: total_events
+        description: "Total usage events on this day"
+        data_tests:
+          - not_null
+
+      - name: active_users
+        description: "Distinct users active on this day"
+        data_tests:
+          - not_null
+
+      - name: distinct_features_used
+        description: "Number of different features used on this day"
+        data_tests:
+          - not_null
+
+  # ───────────────────────────────────────────
+  # fct_tickets
+  # ───────────────────────────────────────────
+  - name: fct_tickets
+    description: >
+      Enriched support ticket fact table. One row per ticket.
+      Includes SLA performance metrics, resolution speed classification,
+      CSAT tiers, and denormalized account context.
+    columns:
+      - name: ticket_id
+        description: "Unique ticket identifier (primary key)"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign key to dim_account"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_account')
+              field: account_id
+
+      - name: priority
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['p1', 'p2', 'p3', 'p4']
+
+      - name: category
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['bug', 'feature_request', 'billing', 'onboarding', 'how_to', 'performance']
+
+      - name: status
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['open', 'resolved', 'escalated']
+
+      - name: resolution_speed
+        description: "Speed classification: fast, on_time, slow, critical_breach, or unresolved"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['fast', 'on_time', 'slow', 'critical_breach', 'unresolved']
+
+      - name: csat_tier
+        description: "Satisfaction grouping: satisfied, neutral, dissatisfied, or no_rating"
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['satisfied', 'neutral', 'dissatisfied', 'no_rating']
