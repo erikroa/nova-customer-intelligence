@@ -1,0 +1,7 @@
+
+*.sql linguist-language=SQL
+*.yml linguist-language=SQL
+
+
+*.py linguist-vendored
+*.csv linguist-vendored
