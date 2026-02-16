@@ -158,8 +158,6 @@ Built by **Erik Roa** as a portfolio project demonstrating Revenue Operations an
 - Google Cloud Data Analytics certified
 - Proficient in dbt, SQL, BigQuery, Python, and Looker Studio
 
-This project reflects the kind of analytics infrastructure that CS and RevOps teams rely on daily to reduce churn, drive expansion, and operationalize customer intelligence.
-
 ---
 
 *Built with [dbt](https://www.getdbt.com/) and [Google BigQuery](https://cloud.google.com/bigquery).*
