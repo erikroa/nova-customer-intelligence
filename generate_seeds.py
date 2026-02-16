@@ -1,5 +1,5 @@
 """
-Generate synthetic seed data for the Nova Customer Intelligence dbt project.
+Synthetic seed data for the Nova Customer Intelligence dbt project.
 Creates 5 interconnected CSVs that simulate a real B2B SaaS company (NovaCRM).
 
 Usage:
@@ -19,12 +19,9 @@ fake = Faker()
 Faker.seed(42)
 random.seed(42)
 
-# Create output directory
 os.makedirs("seeds", exist_ok=True)
 
-# ===========================================================
-# CONFIGURATION - Tweak these to control the data
-# ===========================================================
+# CONFIGURATION 
 NUM_ACCOUNTS = 150
 DATE_START = datetime(2023, 1, 1)
 DATE_END = datetime(2025, 1, 31)
@@ -60,11 +57,9 @@ EVENT_NAMES = [
 TICKET_CATEGORIES = ["bug", "feature_request", "billing", "onboarding", "how_to", "performance"]
 TICKET_PRIORITIES = ["p1", "p2", "p3", "p4"]
 
-# SLA targets in hours (for realistic resolution times)
 SLA_TARGETS = {"p1": 4, "p2": 12, "p3": 48, "p4": 120}
 
-# ===========================================================
-# STEP 1: Generate Accounts
+ Generate Accounts
 # ===========================================================
 print("Generating accounts...")
 
@@ -122,8 +117,7 @@ with open("seeds/raw_accounts.csv", "w", newline="", encoding="utf-8") as f:
 
 print(f"  -> {len(accounts)} accounts")
 
-# ===========================================================
-# STEP 2: Generate Subscriptions
+#Generate Subscriptions
 # ===========================================================
 print("Generating subscriptions...")
 
@@ -216,8 +210,7 @@ with open("seeds/raw_subscriptions.csv", "w", newline="", encoding="utf-8") as f
 
 print(f"  -> {len(subscriptions)} subscriptions")
 
-# ===========================================================
-# STEP 3: Generate Invoices
+# Generate Invoices
 # ===========================================================
 print("Generating invoices...")
 
@@ -280,8 +273,7 @@ with open("seeds/raw_invoices.csv", "w", newline="", encoding="utf-8") as f:
 
 print(f"  -> {len(invoices)} invoices")
 
-# ===========================================================
-# STEP 4: Generate Usage Events
+# Generate Usage Events
 # ===========================================================
 print("Generating usage events...")
 
@@ -311,7 +303,7 @@ for acct in accounts:
 
     user_ids = [f"{acct['account_id']}-U{u:02d}" for u in range(1, num_users + 1)]
 
-    # Generate events for sampled days (not every day, to keep file size manageable)
+    #Events for sampled days (not every day)
     # Sample ~2 days per week
     end_date = DATE_END if status != "churned" else signup + timedelta(days=random.randint(60, 500))
     if end_date > DATE_END:
@@ -328,7 +320,7 @@ for acct in accounts:
     for day_offset in sample_day_offsets:
         event_date = signup + timedelta(days=day_offset)
 
-        # Churned accounts: usage declines toward end
+        # Churned accounts: usage declines toward the end
         if status == "churned":
             progress = day_offset / total_days  # 0 = start, 1 = churn
             daily_events = max(1, int(base_events_per_day * (1 - progress * 0.8)))
@@ -363,10 +355,10 @@ for acct in accounts:
                 "user_id": random.choice(user_ids),
                 "event_name": event_name,
                 "event_timestamp": event_ts.isoformat(),
-                "properties": "",  # Keep empty for seed simplicity
+                "properties": "",  
             })
 
-# Cap at ~15000 events to keep seed file manageable
+# Cap at ~15000 events
 if len(usage_events) > 15000:
     usage_events = sorted(usage_events, key=lambda x: x["event_timestamp"])
     usage_events = random.sample(usage_events, 15000)
@@ -379,8 +371,7 @@ with open("seeds/raw_usage_events.csv", "w", newline="", encoding="utf-8") as f:
 
 print(f"  -> {len(usage_events)} usage events")
 
-# ===========================================================
-# STEP 5: Generate Support Tickets
+#Generate Support Tickets
 # ===========================================================
 print("Generating support tickets...")
 
@@ -486,8 +477,7 @@ with open("seeds/raw_support_tickets.csv", "w", newline="", encoding="utf-8") as
 
 print(f"  -> {len(tickets)} support tickets")
 
-# ===========================================================
-# SUMMARY
+# Summary
 # ===========================================================
 print("\n✅ All seed files generated in seeds/ folder:")
 print(f"   raw_accounts.csv         ({len(accounts)} rows)")
