@@ -1,6 +1,6 @@
 # NovaCRM Customer Intelligence Platform
 
-A production-style dbt analytics project that transforms raw SaaS operational data into actionable customer intelligence — health scores, churn risk assessments, net revenue retention analysis, and support SLA tracking.
+A production-style dbt analytics project that transforms raw SaaS operational data into actionable customer intelligence - health scores, churn risk assessments, net revenue retention analysis, and support SLA tracking.
 
 Built to demonstrate end-to-end data modeling for **Revenue Operations** and **Customer Success Analytics** in a B2B SaaS context.
 
@@ -11,7 +11,7 @@ Built to demonstrate end-to-end data modeling for **Revenue Operations** and **C
 **NovaCRM** is a fictional B2B SaaS CRM platform serving ~150 accounts across SMB, Mid-Market, and Enterprise segments. Leadership needs answers to critical questions:
 
 - *"Which accounts are about to churn, and why?"*
-- *"What's our net revenue retention — are we growing from existing customers?"*
+- *"What's our net revenue retention - are we growing from existing customers?"*
 - *"Are we meeting our support SLAs across all segments?"*
 - *"How do newer customer cohorts compare to older ones?"*
 
