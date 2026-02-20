@@ -1,9 +1,8 @@
 version: 2
 
 models:
-  # ───────────────────────────────────────────
   # stg_accounts
-  # ───────────────────────────────────────────
+  
   - name: stg_accounts
     description: >
       Cleaned account data from CRM system. One row per customer account.
@@ -60,9 +59,9 @@ models:
           - accepted_values:
               values: ['active', 'churned', 'trial', 'suspended']
 
-  # ───────────────────────────────────────────
+ 
   # stg_subscriptions
-  # ───────────────────────────────────────────
+ 
   - name: stg_subscriptions
     description: >
       Cleaned subscription and contract data from billing system.
@@ -119,13 +118,12 @@ models:
         data_tests:
           - not_null
 
-  # ───────────────────────────────────────────
   # stg_invoices
-  # ───────────────────────────────────────────
+  
   - name: stg_invoices
     description: >
       Cleaned invoice data from billing system. One row per invoice.
-      Monthly billing records — the source of truth for revenue.
+      Monthly billing records - the source of truth for revenue.
     columns:
       - name: invoice_id
         description: "Unique identifier for each invoice"
@@ -175,9 +173,8 @@ models:
         data_tests:
           - not_null
 
-  # ───────────────────────────────────────────
   # stg_usage_events
-  # ───────────────────────────────────────────
+
   - name: stg_usage_events
     description: >
       Cleaned product usage event data. One row per user action.
@@ -238,9 +235,9 @@ models:
           - accepted_values:
               values: ['reporting', 'crm_core', 'communication', 'advanced', 'platform', 'other']
 
-  # ───────────────────────────────────────────
+  
   # stg_support_tickets
-  # ───────────────────────────────────────────
+  
   - name: stg_support_tickets
     description: >
       Cleaned support ticket data. One row per ticket.
