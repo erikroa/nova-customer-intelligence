@@ -1,6 +1,3 @@
--- macros/calculate_health_score.sql
--- Calculates a weighted composite health score from four signals.
--- Usage: {{ calculate_health_score('usage_score', 'support_score', 'revenue_score', 'engagement_score') }}
 
 {% macro calculate_health_score(
     usage_score_col,
