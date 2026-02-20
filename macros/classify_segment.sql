@@ -1,6 +1,3 @@
--- macros/classify_segment.sql
--- Classifies an account into a business segment based on employee count and plan tier.
--- Usage: {{ classify_segment('employee_count', 'plan_tier') }}
 
 {% macro classify_segment(employee_count_col, plan_tier_col) %}
   case
