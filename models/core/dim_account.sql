@@ -1,11 +1,8 @@
--- models/core/dim_account.sql
--- Master account dimension. 
-
 with accounts as (
     select * from {{ ref('stg_accounts') }}
 ),
 
--- Current subscription summary per account
+-- subscription summary
 subscription_summary as (
     select
         account_id,
@@ -20,7 +17,7 @@ subscription_summary as (
     group by 1
 ),
 
--- Lifetime support summary per account
+-- Lifetime support summary
 ticket_summary as (
     select
         account_id,
