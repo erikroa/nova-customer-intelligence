@@ -1,7 +1,3 @@
--- models/marts/nrr_summary.sql
--- Net Revenue Retention (NRR) summary by month.
--- Breaks NRR into its components: starting MRR, new, expansion, contraction, churn, ending MRR.
--- This is the #1 metric every SaaS board and investor tracks.
 
 with monthly_movements as (
     select
@@ -15,7 +11,7 @@ with monthly_movements as (
     group by 1
 ),
 
--- Identify churned MRR: accounts that paid last month but not this month
+-- Identify churned MRR
 churn_detection as (
     select
         r.revenue_month as last_active_month,
@@ -30,7 +26,7 @@ churn_detection as (
     group by 1, 2
 ),
 
--- Combine into a complete monthly waterfall
+-- Combined monthly waterfall
 waterfall as (
     select
         m.revenue_month,
