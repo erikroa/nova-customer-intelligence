@@ -33,11 +33,11 @@ Raw Seeds (CSV)          Staging Layer           Core Layer              Mart La
                         60 tests              49 tests                28 tests + 2 custom
 ```
 
-**Total: 157 automated data quality checks — all passing.**
+**Total: 157 automated data quality checks - all passing.**
 
 ## Data Model
 
-### Staging Layer — Clean & Standardize
+### Staging Layer - Clean & Standardize
 | Model | Grain | Purpose |
 |-------|-------|---------|
 | `stg_accounts` | 1 row per account | Trimmed, typed, lowercased CRM data |
@@ -69,8 +69,8 @@ Raw Seeds (CSV)          Staging Layer           Core Layer              Mart La
 
 | Metric | Definition | Why It Matters |
 |--------|-----------|----------------|
-| **NRR** (Net Revenue Retention) | (Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR | >100% = organic growth from existing customers |
-| **GRR** (Gross Revenue Retention) | (Starting MRR − Contraction − Churn) ÷ Starting MRR | How fast the revenue bucket is leaking |
+| **NRR** (Net Revenue Retention) | (Starting MRR + Expansion - Contraction - Churn) ÷ Starting MRR | >100% = organic growth from existing customers |
+| **GRR** (Gross Revenue Retention) | (Starting MRR - Contraction - Churn) ÷ Starting MRR | How fast the revenue bucket is leaking |
 | **Health Score** | Weighted composite: Usage (30%) + Support (20%) + Revenue (25%) + Engagement (25%) | Single number telling CS where to focus |
 | **SLA Adherence** | % of tickets resolved within SLA target by priority | Are we keeping support promises? |
 | **Feature Breadth** | Distinct event categories used ÷ 5 total categories | Are customers using the full product? |
