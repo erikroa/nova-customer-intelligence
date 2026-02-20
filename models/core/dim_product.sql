@@ -1,8 +1,3 @@
--- models/core/dim_product.sql
--- Product catalog dimension. One row per product offering.
--- Built from distinct products found in subscriptions data.
--- In a real company this would come from a product catalog system.
-
 with products_from_subs as (
     select distinct
         product_name,
@@ -29,7 +24,7 @@ product_attributes as (
             else initcap(replace(product_name, '_', ' '))
         end as product_display_name,
 
-        -- List price by product (base MRR)
+        -- List price by product 
         case
             when product_name = 'novacrm_platform' then null  -- varies by tier
             when product_name = 'api_access' then 29
@@ -38,7 +33,7 @@ product_attributes as (
             else 0
         end as list_price_mrr,
 
-        -- Feature category (for adoption analysis)
+        -- Feature category 
         case
             when product_name = 'novacrm_platform' then 'core'
             when product_name = 'api_access' then 'integration'
@@ -51,7 +46,6 @@ product_attributes as (
     group by product_name
 ),
 
--- Separate row for each platform tier
 platform_tiers as (
     select
         'novacrm_platform' as product_name,
