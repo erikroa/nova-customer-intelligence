@@ -1,8 +1,3 @@
--- models/core/fct_revenue.sql
--- Monthly revenue per account. One row per account per month.
--- Calculates MRR, ARR, and classifies revenue movements
--- (new, expansion, contraction, churn).
-
 with monthly_revenue as (
     select
         account_id,
@@ -13,20 +8,17 @@ with monthly_revenue as (
     group by 1, 2
 ),
 
--- Use LAG to get previous month's revenue for movement calculation
 with_previous as (
     select
         account_id,
         revenue_month,
         mrr,
 
-        -- Previous month's MRR (null if this is their first month)
         lag(mrr) over (
             partition by account_id
             order by revenue_month
         )                                       as previous_mrr,
 
-        -- Previous month date (to detect gaps / churned months)
         lag(revenue_month) over (
             partition by account_id
             order by revenue_month
@@ -43,7 +35,6 @@ final as (
         mrr * 12                                as arr,
         coalesce(previous_mrr, 0)               as previous_mrr,
 
-        -- Revenue movement classification
         case
             when previous_mrr is null then 'new'
             when mrr > previous_mrr then 'expansion'
@@ -68,7 +59,7 @@ final as (
         -- Net change
         mrr - coalesce(previous_mrr, 0)         as net_mrr_change,
 
-        -- Months since first invoice (for cohort analysis)
+        -- Months since first invoice
         dense_rank() over (
             partition by account_id
             order by revenue_month
