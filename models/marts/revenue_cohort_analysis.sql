@@ -1,9 +1,3 @@
--- models/marts/revenue_cohort_analysis.sql
--- Cohort-based revenue retention analysis.
--- Groups accounts by signup month, then tracks how their revenue
--- evolves over time. This shows whether newer cohorts retain better
--- than older ones — a key indicator of product-market fit.
-
 with account_cohorts as (
     select
         account_id,
@@ -11,7 +5,7 @@ with account_cohorts as (
     from {{ ref('dim_account') }}
 ),
 
--- Join revenue data with cohort assignments
+-- Join revenue data 
 revenue_with_cohort as (
     select
         r.account_id,
@@ -42,7 +36,7 @@ cohort_metrics as (
     group by 1, 2
 ),
 
--- Get cohort size at month 0 for retention calculation
+-- 
 cohort_sizes as (
     select
         cohort_month,
