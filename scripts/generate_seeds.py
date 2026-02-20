@@ -59,8 +59,8 @@ TICKET_PRIORITIES = ["p1", "p2", "p3", "p4"]
 
 SLA_TARGETS = {"p1": 4, "p2": 12, "p3": 48, "p4": 120}
 
- Generate Accounts
-# ===========================================================
+
+#generate accounts
 print("Generating accounts...")
 
 accounts = []
@@ -118,7 +118,7 @@ with open("seeds/raw_accounts.csv", "w", newline="", encoding="utf-8") as f:
 print(f"  -> {len(accounts)} accounts")
 
 #Generate Subscriptions
-# ===========================================================
+
 print("Generating subscriptions...")
 
 subscriptions = []
@@ -211,7 +211,7 @@ with open("seeds/raw_subscriptions.csv", "w", newline="", encoding="utf-8") as f
 print(f"  -> {len(subscriptions)} subscriptions")
 
 # Generate Invoices
-# ===========================================================
+
 print("Generating invoices...")
 
 invoices = []
@@ -274,7 +274,7 @@ with open("seeds/raw_invoices.csv", "w", newline="", encoding="utf-8") as f:
 print(f"  -> {len(invoices)} invoices")
 
 # Generate Usage Events
-# ===========================================================
+
 print("Generating usage events...")
 
 usage_events = []
@@ -304,7 +304,7 @@ for acct in accounts:
     user_ids = [f"{acct['account_id']}-U{u:02d}" for u in range(1, num_users + 1)]
 
     #Events for sampled days (not every day)
-    # Sample ~2 days per week
+    # Sample around 2 days per week
     end_date = DATE_END if status != "churned" else signup + timedelta(days=random.randint(60, 500))
     if end_date > DATE_END:
         end_date = DATE_END
@@ -372,7 +372,6 @@ with open("seeds/raw_usage_events.csv", "w", newline="", encoding="utf-8") as f:
 print(f"  -> {len(usage_events)} usage events")
 
 #Generate Support Tickets
-# ===========================================================
 print("Generating support tickets...")
 
 tickets = []
@@ -478,7 +477,6 @@ with open("seeds/raw_support_tickets.csv", "w", newline="", encoding="utf-8") as
 print(f"  -> {len(tickets)} support tickets")
 
 # Summary
-# ===========================================================
 print("\n✅ All seed files generated in seeds/ folder:")
 print(f"   raw_accounts.csv         ({len(accounts)} rows)")
 print(f"   raw_subscriptions.csv    ({len(subscriptions)} rows)")
