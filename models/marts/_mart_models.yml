@@ -1,9 +1,9 @@
 version: 2
 
 models:
-  # ───────────────────────────────────────────
+
   # customer_health_scores
-  # ───────────────────────────────────────────
+
   - name: customer_health_scores
     description: >
       Composite health score (0-100) for each active account.
@@ -12,7 +12,7 @@ models:
       Grain: one row per active account.
     columns:
       - name: account_id
-        description: "Primary key — one row per active account"
+        description: "Primary key - one row per active account"
         data_tests:
           - unique
           - not_null
@@ -34,14 +34,13 @@ models:
           - not_null
 
       - name: intervention_priority
-        description: "Rank ordering — 1 = most urgent, needs attention first"
+        description: "Rank ordering - 1 = most urgent, needs attention first"
         data_tests:
           - unique
           - not_null
 
-  # ───────────────────────────────────────────
   # churn_risk_view
-  # ───────────────────────────────────────────
+
   - name: churn_risk_view
     description: >
       Churn risk assessment for active accounts. Combines health score
@@ -70,9 +69,7 @@ models:
         data_tests:
           - not_null
 
-  # ───────────────────────────────────────────
   # nrr_summary
-  # ───────────────────────────────────────────
   - name: nrr_summary
     description: >
       Monthly net revenue retention summary. Shows the MRR waterfall
@@ -96,9 +93,8 @@ models:
         data_tests:
           - not_null
 
-  # ───────────────────────────────────────────
   # revenue_cohort_analysis
-  # ───────────────────────────────────────────
+  
   - name: revenue_cohort_analysis
     description: >
       Cohort retention analysis. Groups accounts by signup month
@@ -121,9 +117,9 @@ models:
       - name: revenue_retention_pct
         description: "Percentage of original MRR retained (can exceed 100% with expansion)"
 
-  # ───────────────────────────────────────────
+
   # sla_adherence
-  # ───────────────────────────────────────────
+  
   - name: sla_adherence
     description: >
       Support SLA performance by priority level and customer segment.
