@@ -10,11 +10,13 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-clean-targets:        
+clean-targets:
   - "target"
   - "dbt_packages"
 
 models:
   nova_customer_intelligence:
-    example:
+    staging:
       +materialized: view
+    marts:
+      +materialized: table
