@@ -1,8 +1,3 @@
--- models/core/dim_date.sql
--- Calendar date spine for time-series analysis.
--- One row per day from 2023-01-01 to 2025-12-31.
--- This table makes it easy to join any fact table to a consistent calendar.
-
 with date_spine as (
     select
         date_day
@@ -35,7 +30,7 @@ final as (
             else false
         end                                                     as is_weekend,
 
-        -- Period boundaries (useful for aggregation)
+        -- Period boundaries
         date_trunc(date_day, month)                             as first_day_of_month,
         last_day(date_day, month)                               as last_day_of_month,
         date_trunc(date_day, quarter)                           as first_day_of_quarter,
