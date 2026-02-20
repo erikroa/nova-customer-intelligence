@@ -1,7 +1,4 @@
 -- models/staging/stg_usage_events.sql
--- Cleans product usage event data. Extracts date and event categories.
--- Source: raw_usage_events seed (Product analytics export)
-
 with source as (
     select * from {{ ref('raw_usage_events') }}
 ),
