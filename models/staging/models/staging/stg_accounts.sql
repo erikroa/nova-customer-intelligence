@@ -1,6 +1,3 @@
--- models/staging/stg_accounts.sql
--- Light cleaning only. No business logic.
--- Source: raw_accounts seed (CRM export)
 
 with source as (
     select * from {{ ref('raw_accounts') }}
