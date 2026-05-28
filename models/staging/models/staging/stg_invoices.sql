@@ -1,6 +1,3 @@
--- models/staging/stg_invoices.sql
--- Cleans invoice/billing data. Standardizes amounts and dates.
--- Source: raw_invoices seed (Billing system export)
 
 with source as (
     select * from {{ ref('raw_invoices') }}

@@ -1,7 +1,3 @@
--- models/core/fct_usage.sql
--- Daily product usage aggregated per account. One row per account per day.
--- Measures engagement depth, feature breadth, and user activity.
-
 with daily_usage as (
     select
         account_id,

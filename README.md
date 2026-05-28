@@ -150,14 +150,24 @@ nova_customer_intelligence/
 
 URL: https://github.com/erikroa/nova-customer-intelligence/tree/main/dashboards
 
-## About
+---
 
-Built by **Erik Roa** as a portfolio project demonstrating Revenue Operations analytics and data modeling capabilities.
+## Live Dashboard
 
-- 8+ years of B2B SaaS experience in Customer Success and Revenue Operations
-- Google Cloud Data Analytics certified
-- Proficient in dbt, SQL, BigQuery, Python, and Looker Studio
+Built in Looker Studio across three pages:
+- **Customer Health Overview** — portfolio health scorecards, tier distribution, segment comparison, intervention table
+- **Churn Risk & Revenue Signals** — risk distribution, NRR/GRR trend, churn watchlist
+- **Revenue Retention & SLA** — cohort retention curves, SLA adherence by priority, resolution time by segment
+
+🔗 [View Live Dashboard](https://datastudio.google.com/reporting/04f21fc1-7465-4b57-970c-de5f888be153)
 
 ---
+
+## Author
+
+**Erik** — Senior CX Operations Manager at Shiftmove · GCP Data Analytics Certified
+Transitioning from Customer Success into Revenue Operations & Data Analytics.
+
+[LinkedIn](https://linkedin.com/in/erikroa) · [GitHub](https://github.com/erikroa)
 
 *Built with [dbt](https://www.getdbt.com/) and [Google BigQuery](https://cloud.google.com/bigquery).*
