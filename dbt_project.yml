@@ -16,6 +16,9 @@ clean-targets:
 
 models:
   nova_customer_intelligence:
+    # BigQuery sandbox (no billing) rejects tables and views without an expiry under 60 days.
+    # 1416 hours = 59 days. Remove this line if billing is enabled on the GCP project.
+    +hours_to_expiration: 1416
     staging:
       +materialized: view
     marts:
