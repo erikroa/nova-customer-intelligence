@@ -30,10 +30,10 @@ Raw Seeds (CSV)          Staging Layer           Core Layer              Mart La
 └──────────────┘     └─────────────────┘    │ fct_tickets      │    └──────────────────────┘
                                             └─────────────────┘
        5 seeds            5 models          6 models + 2 macros         5 models
-                        60 tests              49 tests                28 tests + 2 custom
+                        60 tests              49 tests                25 tests + 2 custom
 ```
 
-**Total: 157 automated data quality checks - all passing.**
+**Total: 136 automated data quality tests (134 generic + 2 custom) - all passing.** `dbt build` runs 157 nodes in total: 5 seeds, 16 models and 136 tests.
 
 ## Data Model
 
@@ -79,7 +79,7 @@ Raw Seeds (CSV)          Staging Layer           Core Layer              Mart La
 
 - **Layered architecture**: raw → staging → core → mart with clear separation of concerns
 - **Reusable macros**: `classify_segment()` and `calculate_health_score()` used across models
-- **Comprehensive testing**: 157 tests including unique, not_null, accepted_values, relationships, and custom singular tests
+- **Comprehensive testing**: 136 tests including unique, not_null, accepted_values, relationships, and custom singular tests
 - **Documentation**: Full `schema.yml` descriptions for every model and column
 - **Revenue modeling**: MRR waterfall, NRR/GRR, cohort retention curves
 - **Customer health scoring**: Weighted composite methodology combining four distinct signals
@@ -95,7 +95,7 @@ Raw Seeds (CSV)          Staging Layer           Core Layer              Mart La
 ### Setup
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/nova-customer-intelligence.git
+git clone https://github.com/erikroa/nova-customer-intelligence.git
 cd nova-customer-intelligence
 
 # Configure your profiles.yml (~/.dbt/profiles.yml)
@@ -114,7 +114,7 @@ Done. PASS=157 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=157
 ## Project Structure
 
 ```
-nova_customer_intelligence/
+nova-customer-intelligence/
 ├── README.md
 ├── dbt_project.yml
 ├── seeds/                          # Synthetic CSV data (5 tables)
