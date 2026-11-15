@@ -85,8 +85,8 @@ scored as (
 
         -- Context metrics
         coalesce(u.avg_daily_events, 0) as avg_daily_events_30d,
-        coalesce(s.recent_open_tickets, 0) as open_tickets_90d,
-        round(coalesce(s.recent_avg_csat, 0), 1) as avg_csat_90d,
+        coalesce(s.recent_open_tickets, 0) as open_tickets_30d,
+        round(coalesce(s.recent_avg_csat, 0), 1) as avg_csat_30d,
         coalesce(r.mrr, 0) as latest_mrr,
         coalesce(r.net_mrr_change, 0) as latest_mrr_change,
         coalesce(e.features_used_30d, 0) as features_used_30d,

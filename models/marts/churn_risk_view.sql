@@ -26,7 +26,7 @@ escalation_signal as (
     select
         account_id,
         count(*) as escalated_tickets_90d,
-        countif(priority in ('p1', 'p2')) as high_priority_tickets_90d
+        countif(priority in ('p1', 'p2')) as high_priority_escalated_tickets_90d
     from {{ ref('fct_tickets') }}
     where created_date >= date_sub(date('2025-01-31'), interval 90 day)
         and status = 'escalated'
@@ -73,7 +73,7 @@ final as (
 
         -- Escalation signals
         coalesce(es.escalated_tickets_90d, 0) as escalated_tickets_90d,
-        coalesce(es.high_priority_tickets_90d, 0) as high_priority_tickets_90d,
+        coalesce(es.high_priority_escalated_tickets_90d, 0) as high_priority_escalated_tickets_90d,
 
         -- Revenue signals
         coalesce(rt.contraction_months_6m, 0) as contraction_months_6m,
